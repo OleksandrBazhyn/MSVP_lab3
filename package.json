@@ -12,6 +12,7 @@
     "dev": "nodemon app.js"
   },
   "dependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "selenium-webdriver": "^4.32.0"
   }
 }
