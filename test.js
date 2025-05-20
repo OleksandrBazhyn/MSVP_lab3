@@ -1,5 +1,10 @@
 import { Builder, By, Key, until } from "selenium-webdriver";
 
+// Допоміжна функція для затримки
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export async function testWebSite(webSiteLink) {
   let driver = await new Builder().forBrowser("chrome").build();
 
@@ -28,6 +33,8 @@ export async function testWebSite(webSiteLink) {
 async function firstTestCase(driver) {
   let res = false;
   try {
+    await delay(5000); // Затримка перед тестом
+
     const textInput = await driver.findElement(By.id("my-text-id"));
     await textInput.clear();
     await textInput.sendKeys("TestUser");
@@ -38,6 +45,8 @@ async function firstTestCase(driver) {
     // Перевірка, що текстове поле містить введене значення
     const value = await textInput.getAttribute("value");
     res = value === "TestUser";
+
+    await delay(5000); // Затримка після тесту
   } catch (error) {
     console.error("Error in first test case:", error);
     res = false;
@@ -50,6 +59,8 @@ async function firstTestCase(driver) {
 async function secondTestCase(driver) {
   let res = false;
   try {
+    await delay(5000); // Затримка перед тестом
+
     const select = await driver.findElement(By.name("my-select"));
     await select.click();
     const option = await driver.findElement(By.css('select[name="my-select"] option[value="2"]'));
@@ -62,6 +73,8 @@ async function secondTestCase(driver) {
     const selectedValue = await select.getAttribute("value");
     const isChecked = await checkbox2.isSelected();
     res = selectedValue === "2" && isChecked;
+
+    await delay(5000); // Затримка після тесту
   } catch (error) {
     console.error("Error in second test case:", error);
     res = false;
@@ -74,6 +87,8 @@ async function secondTestCase(driver) {
 async function thirdTestCase(driver) {
   let res = false;
   try {
+    await delay(5000); // Затримка перед тестом
+
     const dateInput = await driver.findElement(By.name("my-date"));
     await dateInput.clear();
     await dateInput.sendKeys("05/20/2025");
@@ -86,6 +101,8 @@ async function thirdTestCase(driver) {
     const dateValue = await dateInput.getAttribute("value");
     const colorValue = await colorInput.getAttribute("value");
     res = dateValue === "05/20/2025" && colorValue.toLowerCase() === "#ff0000";
+
+    await delay(5000); // Затримка після тесту
   } catch (error) {
     console.error("Error in third test case:", error);
     res = false;
