@@ -11,7 +11,6 @@
 - Node.js (рекомендовано LTS)
 - Google Chrome
 - [ChromeDriver](https://chromedriver.chromium.org/downloads) (має відповідати версії Chrome)
-- Інтернет-з'єднання
 
 ### Встановлення
 
