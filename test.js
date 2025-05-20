@@ -1,6 +1,5 @@
 import { Builder, By, Key, until } from "selenium-webdriver";
 
-// Допоміжна функція для затримки
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -33,7 +32,7 @@ export async function testWebSite(webSiteLink) {
 async function firstTestCase(driver) {
   let res = false;
   try {
-    await delay(5000); // Затримка перед тестом
+    await delay(2000);
 
     const textInput = await driver.findElement(By.id("my-text-id"));
     await textInput.clear();
@@ -46,7 +45,7 @@ async function firstTestCase(driver) {
     const value = await textInput.getAttribute("value");
     res = value === "TestUser";
 
-    await delay(5000); // Затримка після тесту
+    await delay(2000);
   } catch (error) {
     console.error("Error in first test case:", error);
     res = false;
@@ -59,7 +58,7 @@ async function firstTestCase(driver) {
 async function secondTestCase(driver) {
   let res = false;
   try {
-    await delay(5000); // Затримка перед тестом
+    await delay(2000);
 
     const select = await driver.findElement(By.name("my-select"));
     await select.click();
@@ -74,7 +73,7 @@ async function secondTestCase(driver) {
     const isChecked = await checkbox2.isSelected();
     res = selectedValue === "2" && isChecked;
 
-    await delay(5000); // Затримка після тесту
+    await delay(2000);
   } catch (error) {
     console.error("Error in second test case:", error);
     res = false;
@@ -87,7 +86,7 @@ async function secondTestCase(driver) {
 async function thirdTestCase(driver) {
   let res = false;
   try {
-    await delay(5000); // Затримка перед тестом
+    await delay(2000);
 
     const dateInput = await driver.findElement(By.name("my-date"));
     await dateInput.clear();
@@ -102,7 +101,7 @@ async function thirdTestCase(driver) {
     const colorValue = await colorInput.getAttribute("value");
     res = dateValue === "05/20/2025" && colorValue.toLowerCase() === "#ff0000";
 
-    await delay(5000); // Затримка після тесту
+    await delay(2000);
   } catch (error) {
     console.error("Error in third test case:", error);
     res = false;
